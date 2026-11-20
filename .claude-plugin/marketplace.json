@@ -1,0 +1,16 @@
+{
+  "name": "arpoflow-plugins",
+  "owner": {
+    "name": "dealni"
+  },
+  "plugins": [
+    {
+      "name": "arpoflow",
+      "source": "./",
+      "description": "Crie, revise e publique projetos na sua conta ArpoFlow."
+    }
+  ],
+  "metadata": {
+    "description": "Plugins do ArpoFlow para criar, editar e publicar aplicativos pelo Claude Code."
+  }
+}

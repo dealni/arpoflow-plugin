@@ -1,0 +1,13 @@
+{
+  "name": "arpoflow",
+  "version": "1.0.2",
+  "description": "Crie sites e administre projetos e aplicativos no ArpoFlow pelo MCP autenticado.",
+  "author": {
+    "name": "dealni"
+  },
+  "displayName": "ArpoFlow",
+  "icon": "./assets/icon.png",
+  "homepage": "https://arpoflow.com.br",
+  "repository": "https://github.com/dealni/arpoflow-plugin",
+  "privacyPolicyUrl": "https://app.arpoflow.com.br/privacidade"
+}
