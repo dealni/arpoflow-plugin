@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "Crie sites e administre projetos e aplicativos no ArpoFlow pelo MCP autenticado.",
   "author": {
-    "name": "dealni"
+    "name": "Diogo Vieira dos Santos"
   },
   "homepage": "https://arpoflow.com.br",
   "repository": "https://github.com/dealni/arpoflow-plugin",
@@ -13,7 +13,7 @@
     "displayName": "ArpoFlow",
     "shortDescription": "Sites e aplicativos pelo chat",
     "longDescription": "Crie, revise e publique projetos na sua conta ArpoFlow pelo Codex.",
-    "developerName": "dealni",
+    "developerName": "Diogo Vieira dos Santos",
     "category": "Developer Tools",
     "capabilities": [
       "Read",

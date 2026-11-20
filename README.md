@@ -44,4 +44,4 @@ Ao aprovar uma publicação, identifique o projeto e a versão. O ArpoFlow aplic
 
 No Claude Code, o plugin se conecta a `https://api.arpoflow.com.br/mcp`. As ferramentas enviam ao ArpoFlow as operações e os dados de projeto necessários à solicitação e devolvem os resultados ao cliente. Você pode revisar ou revogar o acesso pelo painel do ArpoFlow. [Conexões autorizadas](https://app.arpoflow.com.br/oauth/connections) · [Política de Privacidade](https://app.arpoflow.com.br/privacidade) · [Termos de Uso](https://app.arpoflow.com.br/termos).
 
-Para suporte, escreva para [contato@arpoflow.com.br](mailto:contato@arpoflow.com.br).
+O publicador é Diogo Vieira dos Santos. Para suporte, escreva para [contato@arpoflow.com.br](mailto:contato@arpoflow.com.br).
