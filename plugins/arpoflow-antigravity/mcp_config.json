@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "arpoflow": {
+      "url": "https://arpoflow-api.diogovieiradealni.workers.dev/mcp/gemini/v1"
+    }
+  }
+}

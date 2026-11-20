@@ -1,4 +1,4 @@
-# ArpoFlow para Claude Code e Codex
+# ArpoFlow para Claude Code, Codex e Google Antigravity
 
 Crie sites e aplicativos na sua conta ArpoFlow a partir de uma conversa no Claude Code ou no Codex. O plugin conecta o cliente ao servidor MCP do ArpoFlow e inclui instruções para trabalhar com versões, prévias e publicação. Apps novos podem usar React, TypeScript e TanStack Start com funções de servidor próprias.
 
@@ -31,6 +31,21 @@ codex plugin add arpoflow@arpoflow-plugins
 Conclua a autorização de acesso quando o Codex solicitar. Em uma nova conversa, selecione ArpoFlow e peça para listar seus projetos. A conexão usa o endpoint `https://api.arpoflow.com.br/mcp/openai`.
 
 O catálogo do Codex contém 22 ferramentas para consultar a conta e trabalhar com arquivos, versões, prévias, verificação, exportação e publicação de projetos. Os quatro escopos contemplados são `account:read`, `projects:read`, `projects:write` e `deployments:write`. A autorização concedida determina quais ferramentas estarão disponíveis.
+
+## Google Antigravity
+
+Baixe o [plugin 1.0.4](https://github.com/dealni/arpoflow-plugin/releases/download/v1.0.4/arpoflow-antigravity-1.0.4.zip), extraia e execute no diretório que contém a pasta extraída:
+
+```sh
+agy plugin install ./arpoflow
+agy plugin list
+```
+
+Inicie a autenticação pelo servidor MCP do plugin e autorize sua conta ArpoFlow. Em seguida, peça para listar os seus projetos. Consulte o [guia do pacote](plugins/arpoflow-antigravity/README.md).
+
+## Google Gemini
+
+O acesso pelo chat do Gemini usa o servidor remoto do ArpoFlow e depende da disponibilidade de apps personalizados ou da aprovação do Google para o catálogo. Consulte os [passos de conexão e a disponibilidade](https://app.arpoflow.com.br/integracoes).
 
 ## Exemplos de uso
 
