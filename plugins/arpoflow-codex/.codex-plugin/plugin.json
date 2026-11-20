@@ -1,0 +1,31 @@
+{
+  "name": "arpoflow",
+  "version": "1.0.2",
+  "description": "Crie sites e administre projetos e aplicativos no ArpoFlow pelo MCP autenticado.",
+  "author": {
+    "name": "dealni"
+  },
+  "homepage": "https://arpoflow.com.br",
+  "repository": "https://github.com/dealni/arpoflow-plugin",
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "ArpoFlow",
+    "shortDescription": "Sites e aplicativos pelo chat",
+    "longDescription": "Crie, revise e publique projetos na sua conta ArpoFlow pelo Codex.",
+    "developerName": "dealni",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://arpoflow.com.br",
+    "privacyPolicyURL": "https://app.arpoflow.com.br/privacidade",
+    "termsOfServiceURL": "https://app.arpoflow.com.br/termos",
+    "defaultPrompt": [
+      "Liste os projetos da minha conta ArpoFlow."
+    ],
+    "logo": "./assets/icon.png",
+    "composerIcon": "./assets/icon.png"
+  }
+}

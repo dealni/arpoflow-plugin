@@ -1,0 +1,20 @@
+{
+  "name": "arpoflow-plugins",
+  "interface": {
+    "displayName": "ArpoFlow"
+  },
+  "plugins": [
+    {
+      "name": "arpoflow",
+      "source": {
+        "source": "local",
+        "path": "./plugins/arpoflow-codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

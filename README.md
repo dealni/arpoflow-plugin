@@ -1,6 +1,6 @@
-# ArpoFlow para Claude Code
+# ArpoFlow para Claude Code e Codex
 
-Crie sites e aplicativos na sua conta ArpoFlow a partir de uma conversa no Claude Code. O plugin conecta o cliente ao servidor MCP do ArpoFlow e inclui instruções para trabalhar com versões, prévias e publicação. Apps novos podem usar React, TypeScript e TanStack Start com funções de servidor próprias.
+Crie sites e aplicativos na sua conta ArpoFlow a partir de uma conversa no Claude Code ou no Codex. O plugin conecta o cliente ao servidor MCP do ArpoFlow e inclui instruções para trabalhar com versões, prévias e publicação. Apps novos podem usar React, TypeScript e TanStack Start com funções de servidor próprias.
 
 ## Claude Code
 
@@ -18,6 +18,17 @@ claude plugin install arpoflow@arpoflow-plugins
 ```
 
 Abra uma nova sessão do Claude Code, digite `/mcp`, selecione ArpoFlow e faça login na página de autorização. Revise as permissões solicitadas e use a conta em que deseja criar ou editar projetos.
+
+## Codex
+
+Adicione o catálogo do ArpoFlow e instale o plugin:
+
+```sh
+codex plugin marketplace add dealni/arpoflow-plugin
+codex plugin add arpoflow@arpoflow-plugins
+```
+
+Conclua a autorização de acesso quando o Codex solicitar. Em uma nova conversa, selecione ArpoFlow e peça para listar seus projetos. A conexão usa o endpoint `https://api.arpoflow.com.br/mcp/openai`.
 
 ## Exemplos de uso
 

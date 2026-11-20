@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "arpoflow": {
+      "url": "https://api.arpoflow.com.br/mcp/openai"
+    }
+  }
+}
