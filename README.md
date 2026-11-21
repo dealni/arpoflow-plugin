@@ -2,9 +2,11 @@
 
 Use o ArpoFlow diretamente em uma conversa no ChatGPT, no Claude ou no Google Gemini. Você também pode instalar os plugins para Codex, Claude Code e Google Antigravity. Com as permissões da sua conta, você pode criar e editar sites e aplicativos, conferir prévias e publicar a versão escolhida.
 
+[Abrir a primeira prévia](#abrir-a-primeira-prévia) · [Resolver falhas e retomar](#resolver-falhas-e-retomar)
+
 ## ChatGPT na web
 
-Se o ArpoFlow já estiver disponível na sua conta, abra uma conversa no ChatGPT, digite `@`, selecione **ArpoFlow** e peça “Liste meus projetos”.
+Se o ArpoFlow já estiver disponível na sua conta, abra uma conversa no ChatGPT, digite `@`, selecione **ArpoFlow** e peça “Liste meus projetos”. Selecione `@ArpoFlow` nos pedidos que precisem consultar ou alterar um projeto.
 
 No ChatGPT na web, a conexão MCP personalizada está disponível em workspaces Business, Enterprise e Edu para quem tem permissão de criação. Abra **Plugins → + → Adicionar servidor MCP personalizado**. Use o nome **ArpoFlow**, informe `https://api.arpoflow.com.br/mcp/openai` e escolha **OAuth**. Selecione **Criar como plugin**, autorize o acesso à sua conta ArpoFlow, revise as ferramentas descobertas e instale o plugin. Em uma conversa, mencione `@ArpoFlow` quando quiser usar uma ferramenta. [Guia da OpenAI](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt).
 
@@ -20,7 +22,7 @@ Se a sua conta oferecer apps personalizados, abra os [apps conectados do Gemini]
 https://arpoflow-api.diogovieiradealni.workers.dev/mcp/gemini/v1
 ```
 
-A disponibilidade depende da conta, do idioma e da região. [Guia de conexão do ArpoFlow](https://app.arpoflow.com.br/integracoes) · [Disponibilidade no Gemini](https://support.google.com/gemini/answer/17209137).
+A disponibilidade depende da conta, do idioma e da região. No modo **Chat**, peça `@ArpoFlow List my ArpoFlow projects`. Se o Gemini responder apenas com texto, mencione `@ArpoFlow` novamente, indique o projeto e peça a execução da ferramenta. Se a prévia for de um projeto existente, indique também a versão e confirme a ação se o cliente pedir. [Guia de conexão do ArpoFlow](https://app.arpoflow.com.br/integracoes#gemini) · [Disponibilidade no Gemini](https://support.google.com/gemini/answer/17209137).
 
 ## Claude Code
 
@@ -52,8 +54,6 @@ codex plugin add arpoflow@arpoflow-plugins
 
 Conclua a autorização quando o Codex solicitar. Se precisar iniciar o login pelo terminal, execute `codex mcp login arpoflow` e autorize o acesso no navegador. Em uma nova conversa, selecione ArpoFlow e peça para listar seus projetos. A conexão usa o endpoint `https://api.arpoflow.com.br/mcp/openai`.
 
-O catálogo do Codex contém 22 ferramentas para consultar a conta e trabalhar com arquivos, versões, prévias, verificação, exportação e publicação de projetos. Os quatro escopos contemplados são `account:read`, `projects:read`, `projects:write` e `deployments:write`. A autorização concedida determina quais ferramentas estarão disponíveis.
-
 ## Google Antigravity
 
 Baixe o [plugin 1.0.4](https://github.com/dealni/arpoflow-plugin/releases/download/v1.0.4/arpoflow-antigravity-1.0.4.zip), extraia e execute no diretório que contém a pasta extraída:
@@ -63,15 +63,35 @@ agy plugin install ./arpoflow
 agy plugin list
 ```
 
-No CLI do Antigravity, abra `/plugin`, expanda **ArpoFlow** na lista **Installed** e escolha **Sign in**. Autorize sua conta ArpoFlow no navegador e peça para listar seus projetos. Consulte o [guia do pacote](plugins/arpoflow-antigravity/README.md).
+No Antigravity, abra **Customizations → Installed → ArpoFlow → MCP Servers** e escolha **Authenticate**. No CLI, abra `/plugin`, expanda **ArpoFlow** em **Installed** e escolha **Sign in**. Autorize sua conta ArpoFlow no navegador e peça para listar os seus projetos. [Guia do pacote](plugins/arpoflow-antigravity/README.md).
 
-## Exemplos de uso
+## Outro cliente MCP
 
-- “Liste os projetos da minha conta e mostre a última versão de cada um.”
-- “Crie um app de lista de tarefas com TanStack Start e gere uma prévia para eu revisar.”
-- “Verifique a versão que acabei de editar e mostre o resultado antes de publicar.”
+Use um cliente que aceite Streamable HTTP e OAuth com registro dinâmico. Adicione `https://api.arpoflow.com.br/mcp` como servidor ArpoFlow e autorize sua conta no navegador.
 
-Ao aprovar uma publicação, identifique o projeto e a versão. O ArpoFlow aplica as permissões da sua conta e os limites disponíveis no seu plano.
+## Abrir a primeira prévia
+
+Se o navegador pedir login no ArpoFlow, entre com o código recebido por e-mail. Revise a conta, o perfil e as permissões na tela de autorização, confirme e volte ao assistente.
+
+1. Ative o ArpoFlow no cliente e peça “Liste meus projetos do ArpoFlow”. Uma lista vazia confirma a leitura em uma conta sem projetos.
+2. Envie o exemplo abaixo. Se o cliente pedir confirmação, aprove as ações de criar o rascunho, salvar os arquivos e gerar a prévia.
+3. Abra a URL temporária devolvida pelo servidor. Guarde o nome do projeto e a versão para retomar a edição. Quem receber a URL pode abrir a prévia enquanto ela estiver válida.
+
+> Use o ArpoFlow para criar um projeto de teste chamado Agenda de oficinas. Monte uma página com o título Agenda de oficinas e uma oficina de exemplo. Salve tudo em uma versão, gere apenas a prévia e mostre a URL retornada pelo ArpoFlow, o projeto e a versão.
+
+Essa jornada usa `list_projects`, `create_project`, `apply_changes` e `create_preview`. A criação retorna o projeto e, quando disponível, os arquivos iniciais. A edição salva a primeira versão em um lote. A prévia usa a versão confirmada pelo servidor.
+
+ChatGPT e Codex usam o perfil de autoria OpenAI. Gemini e Antigravity usam o perfil de autoria Google. Ambos oferecem ferramentas de conta, projetos, arquivos, verificação, prévia, publicação e exportação. Claude, Claude Code e clientes do recurso `/mcp` usam o catálogo completo, que pode incluir gestão de dados e jobs. Confira as ferramentas carregadas pelo cliente e os escopos autorizados. A prévia exige `projects:read` e `projects:write`. A publicação exige autorização específica para o projeto e a versão.
+
+## Resolver falhas e retomar
+
+| Sintoma                                                               | Como retomar                                                                                                                                                                                                                      |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cliente pede login novamente ou mostra outra conta                    | Abra a conexão no cliente e faça login pelo navegador com a conta que contém o projeto. Liste os projetos e confirme o nome ou ID antes de editar.                                                                                |
+| Leitura funciona e a escrita está bloqueada                           | Confirme se o cliente carregou as ferramentas de escrita, se a conexão inclui `projects:write` e se a ação foi aprovada. Atualize a descoberta quando o cliente oferecer essa opção.                                              |
+| Criação ou gravação ficou sem resposta                                | No mesmo cliente, consulte `get_operation` se tiver o ID do projeto e da operação. Para retomar a chamada, preserve os argumentos e a chave idempotente originais e respeite o horário de nova tentativa informado pelo servidor. |
+| A versão-base mudou ou a compilação falhou                            | Releia a versão atual e confira as alterações, ou corrija o erro de compilação informado. Use uma nova chave para o lote revisado.                                                                                                |
+| O link expirou, ficou sem resposta ou o cliente devolveu apenas texto | Confira primeiro qual versão foi salva. Peça a execução de `create_preview` para essa versão e aguarde a URL do servidor. Você também pode abrir o projeto no painel e conferir a prévia da versão em exibição.                   |
 
 ## Privacidade e suporte
 
