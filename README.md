@@ -6,7 +6,7 @@ Use o ArpoFlow diretamente em uma conversa no ChatGPT, no Claude ou no Google Ge
 
 Se o ArpoFlow já estiver disponível na sua conta, abra uma conversa no ChatGPT, digite `@`, selecione **ArpoFlow** e peça “Liste meus projetos”.
 
-Para configurar a conexão em uma conta com permissão para adicionar servidores MCP, abra **Plugins → + → Adicionar servidor MCP personalizado**. Use o nome **ArpoFlow**, informe `https://api.arpoflow.com.br/mcp/openai` e escolha **OAuth**. Conclua a autorização na sua conta ArpoFlow e instale o plugin. A disponibilidade de ações de edição e publicação depende do plano e das permissões do workspace. [Guia da OpenAI](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt).
+No ChatGPT na web, a conexão MCP personalizada está disponível em workspaces Business, Enterprise e Edu para quem tem permissão de criação. Abra **Plugins → + → Adicionar servidor MCP personalizado**. Use o nome **ArpoFlow**, informe `https://api.arpoflow.com.br/mcp/openai` e escolha **OAuth**. Selecione **Criar como plugin**, autorize o acesso à sua conta ArpoFlow, revise as ferramentas descobertas e instale o plugin. Em uma conversa, mencione `@ArpoFlow` quando quiser usar uma ferramenta. [Guia da OpenAI](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt).
 
 ## Claude na web
 
@@ -50,7 +50,7 @@ codex plugin marketplace add dealni/arpoflow-plugin
 codex plugin add arpoflow@arpoflow-plugins
 ```
 
-Conclua a autorização de acesso quando o Codex solicitar. Em uma nova conversa, selecione ArpoFlow e peça para listar seus projetos. A conexão usa o endpoint `https://api.arpoflow.com.br/mcp/openai`.
+Conclua a autorização quando o Codex solicitar. Se precisar iniciar o login pelo terminal, execute `codex mcp login arpoflow` e autorize o acesso no navegador. Em uma nova conversa, selecione ArpoFlow e peça para listar seus projetos. A conexão usa o endpoint `https://api.arpoflow.com.br/mcp/openai`.
 
 O catálogo do Codex contém 22 ferramentas para consultar a conta e trabalhar com arquivos, versões, prévias, verificação, exportação e publicação de projetos. Os quatro escopos contemplados são `account:read`, `projects:read`, `projects:write` e `deployments:write`. A autorização concedida determina quais ferramentas estarão disponíveis.
 
@@ -63,7 +63,7 @@ agy plugin install ./arpoflow
 agy plugin list
 ```
 
-Inicie a autenticação pelo servidor MCP do plugin e autorize sua conta ArpoFlow. Em seguida, peça para listar os seus projetos. Consulte o [guia do pacote](plugins/arpoflow-antigravity/README.md).
+No CLI do Antigravity, abra `/plugin`, expanda **ArpoFlow** na lista **Installed** e escolha **Sign in**. Autorize sua conta ArpoFlow no navegador e peça para listar seus projetos. Consulte o [guia do pacote](plugins/arpoflow-antigravity/README.md).
 
 ## Exemplos de uso
 
