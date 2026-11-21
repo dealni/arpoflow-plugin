@@ -2,7 +2,7 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "arpoflow",
   "displayName": "ArpoFlow",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Crie, edite e publique sites e aplicativos na sua conta ArpoFlow pelo Antigravity.",
   "author": {
     "name": "Diogo Vieira dos Santos"
@@ -12,7 +12,7 @@
   "logo": "assets/icon.png",
   "suggestedPrompts": [
     "Liste os meus projetos no ArpoFlow.",
-    "Crie um catálogo de livros no ArpoFlow e abra uma prévia privada.",
+    "Crie um catálogo de livros no ArpoFlow e mostre o link da prévia privada.",
     "Confira a versão atual do meu projeto antes de publicar."
   ]
 }

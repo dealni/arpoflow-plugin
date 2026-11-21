@@ -22,7 +22,7 @@ Se a sua conta oferecer apps personalizados, abra os [apps conectados do Gemini]
 https://arpoflow-api.diogovieiradealni.workers.dev/mcp/gemini/v1
 ```
 
-A disponibilidade depende da conta, do idioma e da região. No modo **Chat**, peça `@ArpoFlow List my ArpoFlow projects`. Se o Gemini responder sem executar a ação, mencione `@ArpoFlow` novamente, indique o projeto e peça a execução da ferramenta. Para uma prévia, indique a versão salva e peça a URL retornada pelo servidor. Confirme a ação se o Gemini solicitar. [Guia de conexão do ArpoFlow](https://app.arpoflow.com.br/integracoes#gemini) · [Disponibilidade no Gemini](https://support.google.com/gemini/answer/17209137).
+A disponibilidade depende da conta, do idioma e da região. No modo **Chat**, peça `@ArpoFlow List my ArpoFlow projects`. Se o Gemini responder sem executar a ação, mencione `@ArpoFlow` novamente, indique o projeto e peça a execução da ferramenta. Para uma prévia, indique a versão salva e peça que o Gemini exiba **Abrir prévia** com o endereço exato devolvido pelo ArpoFlow. Confirme a ação se o Gemini solicitar. [Guia de conexão do ArpoFlow](https://app.arpoflow.com.br/integracoes#gemini) · [Disponibilidade no Gemini](https://support.google.com/gemini/answer/17209137).
 
 ## Claude Code
 
@@ -56,7 +56,7 @@ Conclua a autorização quando o Codex solicitar. Se precisar iniciar o login pe
 
 ## Google Antigravity
 
-Baixe o [plugin 1.0.5](https://github.com/dealni/arpoflow-plugin/releases/download/v1.0.5/arpoflow-antigravity-1.0.5.zip), extraia e execute no diretório que contém a pasta extraída:
+Baixe o [plugin 1.0.6](https://github.com/dealni/arpoflow-plugin/releases/download/v1.0.6/arpoflow-antigravity-1.0.6.zip), extraia e execute no diretório que contém a pasta extraída:
 
 ```sh
 agy plugin install ./arpoflow
@@ -79,7 +79,7 @@ Se o navegador pedir login no ArpoFlow, entre com o código recebido por e-mail.
 
 > Use o ArpoFlow para criar um projeto de teste chamado Agenda de oficinas. Monte uma página com o título Agenda de oficinas e uma oficina de exemplo. Salve tudo em uma versão e gere a prévia dessa versão. Mostre o ID do projeto, a versão, a URL exata retornada pelo ArpoFlow e até quando vale. Mantenha o projeto como rascunho.
 
-Essa jornada usa `list_projects`, `create_project`, `apply_changes` e `create_preview`. A criação retorna o projeto e, quando disponível, os arquivos iniciais. A edição salva a primeira versão em um lote. A prévia usa a versão confirmada pelo servidor. Quando a ferramenta oferecer `includeManifest`, passe `false` para receber só a sessão com a URL e a validade em `data.session`.
+Essa jornada usa `list_projects`, `create_project`, `apply_changes` e `create_preview`. A criação retorna o projeto e, quando disponível, os arquivos iniciais. A edição salva a primeira versão em um lote. A prévia usa a versão confirmada pelo servidor. Quando a ferramenta oferecer `includeManifest`, passe `false` para receber uma resposta compacta. Mostre o link de `data.message` quando presente ou a URL de `data.session.url`, preservando o endereço completo.
 
 ChatGPT e Codex usam o perfil de autoria OpenAI. Gemini e Antigravity usam o perfil de autoria Google. Ambos oferecem ferramentas de conta, projetos, arquivos, verificação, prévia, publicação e exportação. Claude, Claude Code e clientes do recurso `/mcp` usam o catálogo completo, que pode incluir gestão de dados e jobs. Confira as ferramentas carregadas pelo cliente e os escopos autorizados. A prévia exige `projects:read` e `projects:write`. A publicação exige autorização específica para o projeto e a versão.
 
