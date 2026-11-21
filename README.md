@@ -1,6 +1,6 @@
 # ArpoFlow para Claude Code, Codex e Google Antigravity
 
-Crie sites e aplicativos na sua conta ArpoFlow a partir de uma conversa no Claude Code ou no Codex. O plugin conecta o cliente ao servidor MCP do ArpoFlow e inclui instruções para trabalhar com versões, prévias e publicação. Apps novos podem usar React, TypeScript e TanStack Start com funções de servidor próprias.
+Crie sites e aplicativos na sua conta ArpoFlow pelo Claude Code, Codex ou Google Antigravity. Os plugins conectam esses clientes ao servidor MCP do ArpoFlow e incluem instruções para trabalhar com versões, prévias e publicação. No Google Gemini, a conexão é feita diretamente pelo chat. Apps novos podem usar React, TypeScript e TanStack Start com funções de servidor próprias.
 
 ## Claude Code
 
@@ -45,7 +45,13 @@ Inicie a autenticação pelo servidor MCP do plugin e autorize sua conta ArpoFlo
 
 ## Google Gemini
 
-O acesso pelo chat do Gemini usa o servidor remoto do ArpoFlow e depende da disponibilidade de apps personalizados ou da aprovação do Google para o catálogo. Consulte os [passos de conexão e a disponibilidade](https://app.arpoflow.com.br/integracoes).
+Se a sua conta oferecer apps personalizados, abra os [apps conectados do Gemini](https://gemini.google.com/customize/connectors), escolha **Personalizado** e cadastre o servidor MCP abaixo. Autorize a conexão pelo navegador e selecione o ArpoFlow usando `@` no chat.
+
+```text
+https://arpoflow-api.diogovieiradealni.workers.dev/mcp/gemini/v1
+```
+
+A disponibilidade depende da conta, do idioma e da região. [Guia de conexão do ArpoFlow](https://app.arpoflow.com.br/integracoes) · [Disponibilidade no Gemini](https://support.google.com/gemini/answer/17209137).
 
 ## Exemplos de uso
 
