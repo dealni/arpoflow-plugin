@@ -41,7 +41,7 @@ claude plugin install arpoflow@arpoflow-plugins
 
 Abra uma nova sessão do Claude Code, digite `/mcp`, selecione ArpoFlow e faça login na página de autorização. Revise as permissões solicitadas e use a conta em que deseja criar ou editar projetos. O catálogo do Claude inclui as ferramentas de autoria e as de gestão habilitadas para a sua conta, como consulta de dados e administração de jobs. O que você pode fazer depende das permissões concedidas.
 
-Para atualizar o plugin, execute `claude plugin update arpoflow@arpoflow-plugins`.
+Para atualizar, execute `claude plugin marketplace update arpoflow-plugins` e `claude plugin update arpoflow@arpoflow-plugins`. Abra uma nova sessão para carregar a atualização.
 
 ## Codex
 
@@ -56,7 +56,7 @@ Conclua a autorização quando o Codex solicitar. Se precisar iniciar o login pe
 
 ## Google Antigravity
 
-Baixe o [plugin 1.0.6](https://github.com/dealni/arpoflow-plugin/releases/download/v1.0.6/arpoflow-antigravity-1.0.6.zip), extraia e execute no diretório que contém a pasta extraída:
+Baixe o [plugin 1.0.7](https://github.com/dealni/arpoflow-plugin/releases/download/v1.0.7/arpoflow-antigravity-1.0.7.zip), extraia e execute no diretório que contém a pasta extraída:
 
 ```sh
 agy plugin install ./arpoflow
@@ -79,9 +79,9 @@ Se o navegador pedir login no ArpoFlow, entre com o código recebido por e-mail.
 
 > Use o ArpoFlow para criar um projeto de teste chamado Agenda de oficinas. Monte uma página com o título Agenda de oficinas e uma oficina de exemplo. Salve tudo em uma versão e gere a prévia dessa versão. Mostre o ID do projeto, a versão, a URL exata retornada pelo ArpoFlow e até quando vale. Mantenha o projeto como rascunho.
 
-Essa jornada usa `list_projects`, `create_project`, `apply_changes` e `create_preview`. A criação retorna o projeto e, quando disponível, os arquivos iniciais. A edição salva a primeira versão em um lote. A prévia usa a versão confirmada pelo servidor. Quando a ferramenta oferecer `includeManifest`, passe `false` para receber uma resposta compacta. Mostre o link de `data.message` quando presente ou a URL de `data.session.url`, preservando o endereço completo.
+Essa jornada usa `list_projects`, `create_project`, `apply_changes` e `create_preview`. A criação retorna o projeto e, quando disponível, os arquivos iniciais. A edição salva a primeira versão em um lote. Para gerar a prévia, use o `data.versionId` devolvido por `apply_changes` com `data.status` igual a `succeeded`. Quando a ferramenta oferecer `includeManifest`, passe `false` para receber uma resposta compacta. No perfil Google, use o link de `data.message` quando presente. Nos demais casos, use `data.session.url`. Preserve o endereço completo e informe a validade de `data.session.expiresAt`.
 
-ChatGPT e Codex usam o perfil de autoria OpenAI. Gemini e Antigravity usam o perfil de autoria Google. Ambos oferecem ferramentas de conta, projetos, arquivos, verificação, prévia, publicação e exportação. Claude, Claude Code e clientes do recurso `/mcp` usam o catálogo completo, que pode incluir gestão de dados e jobs. Confira as ferramentas carregadas pelo cliente e os escopos autorizados. A prévia exige `projects:read` e `projects:write`. A publicação exige autorização específica para o projeto e a versão.
+ChatGPT e Codex usam o perfil de autoria OpenAI. Gemini e Antigravity usam o perfil de autoria Google. Os dois perfis oferecem ferramentas de conta, projetos, arquivos, verificação, prévia, publicação e exportação. Claude, Claude Code e clientes do recurso `/mcp` usam o catálogo completo, que pode incluir gestão de dados e jobs. Confira as ferramentas carregadas pelo cliente e os escopos da conexão. A prévia exige `projects:read` e `projects:write`. A publicação pelo MCP exige o escopo `deployments:write` e um pedido para publicar o projeto e a versão escolhidos.
 
 ## Resolver falhas e retomar
 
@@ -89,13 +89,14 @@ Ative o ArpoFlow em outra conversa. Informe o ID do projeto ou o nome exato. Se 
 
 > No ArpoFlow, retome o projeto Agenda de oficinas. Leia a versão atual e os arquivos que precisar. Troque o título da página para Agenda de oficinas comunitárias e mantenha a oficina de exemplo. Salve sobre a versão consultada, gere a prévia da nova versão e mostre os IDs do projeto e da versão, a URL exata e a validade. Mantenha o projeto como rascunho.
 
-| Sintoma                                                               | Como retomar                                                                                                                                                                                                                      |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cliente pede login novamente ou mostra outra conta                    | Abra a conexão no cliente e faça login pelo navegador com a conta que contém o projeto. Liste os projetos e confirme o nome ou ID antes de editar.                                                                                |
-| Leitura funciona e a escrita está bloqueada                           | Confirme se o cliente carregou as ferramentas de escrita, se a conexão inclui `projects:write` e se a ação foi aprovada. Atualize a descoberta quando o cliente oferecer essa opção.                                              |
-| Criação ou gravação ficou sem resposta                                | No mesmo cliente, consulte `get_operation` se tiver o ID do projeto e da operação. Ao repetir a chamada, preserve a chave e os argumentos originais e respeite o horário de nova tentativa. Se faltar a chave ou o servidor indicar `response_omitted`, confira o projeto e a versão atual. |
-| A versão-base mudou ou a compilação falhou                            | Releia a versão atual e confira as alterações, ou corrija o erro de compilação informado. Use uma nova chave para o lote revisado.                                                                                                |
-| O link expirou ou ficou ausente                                       | Confira primeiro qual versão foi salva. Peça a execução de `create_preview` para essa versão e aguarde a URL do servidor. Você também pode abrir o projeto no painel e conferir a prévia da versão em exibição.                   |
+| Sintoma | Como retomar |
+| --- | --- |
+| Cliente pede login novamente ou mostra outra conta | Abra a conexão no cliente e faça login pelo navegador com a conta que contém o projeto. Liste os projetos e confirme o nome ou ID antes de editar. |
+| Leitura funciona e a escrita está bloqueada | Confirme se o cliente carregou a ferramenta da ação, se a conexão inclui o escopo exigido e se a ação foi aprovada. Atualize a descoberta quando o cliente oferecer essa opção. |
+| Criação ou gravação ficou sem resposta | No mesmo cliente, consulte `get_operation` se tiver `projectId` e `operationId`. Se faltar a chave original ou o servidor indicar `response_omitted`, confira o projeto e a versão atual antes de iniciar outro lote. |
+| Operação continua em andamento ou segue sem recibo | Ao repetir a chamada original, preserve `idempotencyKey` e todos os argumentos. Aguarde o horário indicado em `data.retryAfter` quando houver. |
+| A versão-base mudou ou a compilação falhou | Releia a versão atual e confira as alterações, ou corrija o erro de compilação informado. Use uma nova chave para o lote revisado. |
+| O link expirou ou ficou ausente | Confira qual versão foi salva. Peça a execução de `create_preview` para essa versão e aguarde a URL do servidor. No painel, confira se o identificador do rascunho exibido corresponde à versão desejada antes de abrir **Prévia**. |
 
 ## Revisar e publicar pelo painel
 
